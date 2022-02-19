@@ -29,7 +29,13 @@ rect2.color = 'black'
 // rect2.id = '3232' -- ошибка, т. к. это readonly, то есть id уже присвоен и не может меняться
 
 
-const rect3 = {} as Rect // в последствии этот объект будет считаться этим типом
+const rect3 = {
+    id: '3242',
+    size: {
+        width: 13,
+        height: 4
+    }
+} as Rect // в последствии этот объект будет считаться этим типом
 const rect4 = <Rect>{} // -- старая запись
 
 // наследование интерфейсов
@@ -50,4 +56,22 @@ const rect5: RectWithArea = {
 
 interface IClock { // интерфейсы принято называть через большую I, это сразу говорить о том что это интерфейс
     time: Date
+    setTime(date: Date): void
+}
+
+class Clock implements IClock { // данный класс имплементируется от интерфейса IClock
+    time: Date = new Date()
+    setTime(date: Date): void {
+        this.time = date
+    }
+}
+// ситуация когда у объекта большое количество динамических ключей
+interface Styles {
+    [key: string]: string
+}
+
+const css: Styles = {
+    border: '1px solid black',
+    marginTop: '2px',
+    borderRadius: '5px'
 }

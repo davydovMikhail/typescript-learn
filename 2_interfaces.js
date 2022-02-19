@@ -15,6 +15,35 @@ var rect2 = {
 };
 rect2.color = 'black';
 // rect2.id = '3232' -- ошибка, т. к. это readonly, то есть id уже присвоен и не может меняться
-var rect3 = {}; // в последствии этот объект будет считаться этим типом
+var rect3 = {
+    id: '3242',
+    size: {
+        width: 13,
+        height: 4
+    }
+}; // в последствии этот объект будет считаться этим типом
 var rect4 = {}; // -- старая запись
-// наследование интерфейсов
+var rect5 = {
+    id: '123',
+    size: {
+        width: 20,
+        height: 20
+    },
+    getArea: function () {
+        return this.size.width * this.size.height;
+    }
+};
+var Clock = /** @class */ (function () {
+    function Clock() {
+        this.time = new Date();
+    }
+    Clock.prototype.setTime = function (date) {
+        this.time = date;
+    };
+    return Clock;
+}());
+var css = {
+    border: '1px solid black',
+    marginTop: '2px',
+    borderRadius: '5px'
+};
