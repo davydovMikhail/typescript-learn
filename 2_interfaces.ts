@@ -33,3 +33,21 @@ const rect3 = {} as Rect // в последствии этот объект бу
 const rect4 = <Rect>{} // -- старая запись
 
 // наследование интерфейсов
+interface RectWithArea extends Rect {
+    getArea: () => number
+}
+
+const rect5: RectWithArea = {
+    id: '123',
+    size: {
+        width: 20,
+        height:20
+    },
+    getArea(): number {
+        return this.size.width * this.size.height 
+    }
+}
+
+interface IClock { // интерфейсы принято называть через большую I, это сразу говорить о том что это интерфейс
+    time: Date
+}
